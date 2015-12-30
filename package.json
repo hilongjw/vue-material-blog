@@ -1,12 +1,23 @@
 {
-  "name": "clzoe",
-  "version": "2.0.0",
-  "description": "cloze@fun.baicizhan.com",
+  "name": "vue-material-blog",
+  "version": "0.0.1",
+  "description": "a simple blog make by Vue and Material-design-lite",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot  --host 0.0.0.0 --config build/webpack.dev.config.js",
     "build": "webpack --progress --hide-modules --config build/webpack.prod.config.js"
   },
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/hilongjw/vue-material-blog.git"
+  },
+  "keywords": [
+    "material",
+    "vue demo",
+    "vue blog",
+    "Vue",
+    "Webpack"
+  ],
   "dependencies": {
     "vue": "^1.0.0",
     "vue-async-data": "^1.0.2",
@@ -24,7 +35,6 @@
     "eslint": "^1.10.3",
     "eslint-loader": "^1.1.1",
     "file-loader": "^0.8.4",
-    "jade": "^1.11.0",
     "material-design-lite": "^1.0.6",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.4.0",
@@ -34,8 +44,7 @@
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^7.0.0",
     "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.0",
-    "weixin-js-sdk": "^1.0.7"
+    "webpack-dev-server": "^1.12.0"
   },
   "author": "longjw"
 }
