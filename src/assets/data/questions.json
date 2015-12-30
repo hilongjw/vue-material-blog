@@ -1,0 +1,87 @@
+[
+                    {
+                        // 单词
+                        "word": "solar",
+                        // 正确单词解释
+                        "mean_word": "adj.太阳的",
+                        // 单词音频路径
+                        "audio_word": "http://baicizhan.cdn.bj.xs3cnc.com/word_audios/solar.mp3",
+                        // 句子
+                        "sentence": "The clumsy man fell down the stairs and hurt himself.",
+                        // 句子翻译
+                        "mean_sentence":"这个笨拙的男人从楼梯上摔下，伤了自己",
+                        // 句子音频路径
+                        "audio_sentence": "http://baicizhan.cdn.bj.xs3cnc.com/sentence_audios/sa_1_6670_0_3_20150808125332.aac",
+                        // 正确图片路径
+                        "picture": "bigbang_img/data_demo/demo1104/clumsy/1.jpg",
+                        // 拼写分词
+                        "spell_block": "-s_o-l_ar",
+                        // 联想词
+                        "similar_option_1": "energy",
+                        "similar_option_2": "power",
+                        "similar_option_3": "sun"
+                    },
+                    {
+                        // 单词
+                        "word": "leisure",
+                        // 正确单词解释
+                        "mean_word": "adj.可行的，可信的",
+                        // 单词音频路径
+                        "audio_word": "http://baicizhan.cdn.bj.xs3cnc.com/word_audios/leisure.mp3",
+                        // 句子
+                        "sentence": "I think your construction plan is feasible. Let's start to build the house!",
+                        // 句子翻译
+                        "mean_sentence":"我觉得你的建造计划很可行，我们开始建房子吧！",
+                        // 句子音频路径
+                        "audio_sentence": "http://baicizhan.cdn.bj.xs3cnc.com/sentence_audios/sa_8963_1_0_2_150707113751.mp3",
+                        // 正确图片路径
+                        "picture": "bigbang_img/data_demo/demo1104/feasible/1.jpg",
+                        // 拼写分词
+                        "spell_block": "-l_ei-s_ure",
+                        "similar_option_1": "positive",
+                        "similar_option_2": "relax",
+                        "similar_option_3": "pleasure"
+                    },
+                    {
+                        // 单词
+                        "word": "gaze",
+                        // 正确单词解释
+                        "mean_word": "adj.可行的，可信的",
+                        // 单词音频路径
+                        "audio_word": "http://baicizhan.cdn.bj.xs3cnc.com/word_audios/gaze.mp3",
+                        // 句子
+                        "sentence": "I think your construction plan is feasible. Let's start to build the house!",
+                        // 句子翻译
+                        "mean_sentence":"我觉得你的建造计划很可行，我们开始建房子吧！",
+                        // 句子音频路径
+                        "audio_sentence": "http://baicizhan.cdn.bj.xs3cnc.com/sentence_audios/sa_8963_1_0_2_150707113751.mp3",
+                        // 正确图片路径
+                        "picture": "bigbang_img/data_demo/demo1104/feasible/1.jpg",
+                        // 拼写分词
+                        "spell_block": "-g_aze",
+                        "similar_option_1": "look",
+                        "similar_option_2": "stare",
+                        "similar_option_3": "eye"
+                    },
+                    {
+                        // 单词
+                        "word": "justice",
+                        // 正确单词解释
+                        "mean_word": "adj.可行的，可信的",
+                        // 单词音频路径
+                        "audio_word": "http://baicizhan.cdn.bj.xs3cnc.com/word_audios/justice.mp3",
+                        // 句子
+                        "sentence": "I think your construction plan is feasible. Let's start to build the house!",
+                        // 句子翻译
+                        "mean_sentence":"我觉得你的建造计划很可行，我们开始建房子吧！",
+                        // 句子音频路径
+                        "audio_sentence": "http://baicizhan.cdn.bj.xs3cnc.com/sentence_audios/sa_8963_1_0_2_150707113751.mp3",
+                        // 正确图片路径
+                        "picture": "bigbang_img/data_demo/demo1104/feasible/1.jpg",
+                        // 拼写分词
+                        "spell_block": "-j_us-t_ice",
+                        "similar_option_1": "fair",
+                        "similar_option_2": "count",
+                        "similar_option_3": "judge"
+                    }
+                ]
