@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --inline --hot  --host 0.0.0.0 --config build/webpack.dev.config.js",
     "build": "webpack --progress --hide-modules --config build/webpack.prod.config.js"
   },
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/hilongjw/vue-material-blog.git"
   },
@@ -21,7 +21,8 @@
   "dependencies": {
     "vue": "^1.0.0",
     "vue-async-data": "^1.0.2",
-    "vue-resource": "^0.1.17"
+    "vue-resource": "^0.1.17",
+    "vue-router": "^0.7.7"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.1",
