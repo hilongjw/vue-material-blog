@@ -2,6 +2,8 @@
 
 vue + material design lite + leancloud blog
 
+preview -> [http://hilongjw.github.io/vue-material-blog/](http://hilongjw.github.io/vue-material-blog/)
+
 ![preview1](https://github.com/hilongjw/vue-material-blog/blob/master/preview1.png) 
 ![preview2](https://github.com/hilongjw/vue-material-blog/blob/master/preview2.png) 
 ## 安装
