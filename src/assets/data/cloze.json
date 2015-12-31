@@ -1,0 +1,405 @@
+[{
+	"word":"eternity",
+	"highlight":"eter__ty",
+	"space":"etern_ty",
+	"block":["e","ter","ni","ty"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"I promise to love you for the rest of eternity.",
+	"sentence_audio":"example_2_12161_1332725516.mp3",
+	"img":"20120301_20_23_50_719.jpg",
+	"tip":[{
+			"word":"sensible",
+			"highlight":"sens_ble"
+		},
+		{
+			"word":"destiny",
+			"highlight":"dest_ny"
+		}]
+},
+{
+	"word":"dinosaur",
+	"highlight":"dino____",
+	"space":"dinos__r",
+	"block":["di","no","saur"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"100 million years ago, dinosaurs ruled the Earth.",
+	"sentence_audio":"example_2_22785_1343244745.mp3",
+	"img":"20120513_03_41_54_746.jpg",
+	"tip":[{
+			"word":"sauce",
+			"highlight":"s__ce"
+		},
+		{
+			"word":"fault",
+			"highlight":"f__lt"
+		}]
+},
+{
+	"word":"primarily",
+	"highlight":"___marily",
+	"space":"pr_marily",
+	"block":["pri","ma","ri","ly"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"'Primarily, you make sure to reach school on time.'said the teacher. ",
+	"sentence_audio":"1426070711769.mp3",
+	"img":"1426070711383.jpg",
+	"tip":[{
+			"word":"nice",
+			"highlight":"n_ce"
+		},
+		{
+			"word":"like",
+			"highlight":"l_ke"
+		},{
+			"word":"time",
+			"highlight":"t_me"
+		}]
+},
+{
+	"word":"guarantee",
+	"highlight":"guaran___",
+	"space":"guarant__",
+	"block":["gua","ran","tee"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"We give you a 100% guarantee that the product will be safe.",
+	"sentence_audio":"example_2_17002_1341759327.mp3",
+	"img":"20120622_03_17_11_903.jpg",
+	"tip":[{
+			"word":"see",
+			"highlight":"s__"
+		},
+		{
+			"word":"three",
+			"highlight":"thr__"
+		},{
+			"word":"meet",
+			"highlight":"m__t"
+		}]
+},
+{
+	"word":"researcher",
+	"highlight":"re____cher",
+	"space":"res___cher",
+	"block":["re","sear","cher"],
+	"option":["a","e","i","o","u","y","r"],
+	"sentence":"This researcher is seeing something interesting with his microscope.",
+	"sentence_audio":"example_2_41632_1379496078.mp3",
+	"img":"14273_20120310_15_06_23_929.jpg",
+	"tip":[{
+			"word":"search",
+			"highlight":"s___ch"
+		},
+		{
+			"word":"earth",
+			"highlight":"___th"
+		},{
+			"word":"earn",
+			"highlight":"___n"
+		}]
+},
+{
+	"word":"peculiar",
+	"highlight":"pecu____",
+	"space":"peculi__",
+	"block":["pe","cu","liar"],
+	"option":["a","e","i","o","u","y","r"],
+	"sentence":"It's very peculiar for dogs to wear human clothes.",
+	"sentence_audio":"1425953038017.mp3",
+	"img":"1425953037343.jpg",
+	"tip":[{
+			"word":"familiar",
+			"highlight":"famili__"
+		},
+		{
+			"word":"similar",
+			"highlight":"simil__"
+		}]
+},
+{
+	"word":"inhabit",
+	"highlight":"in__bit",
+	"space":"inh_bit",
+	"block":["in","ha","bit"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"Over 80 people inhabit this building.",
+	"sentence_audio":"example_2_39392_1370661012.mp3",
+	"img":"20120503_05_52_47_224.jpg",
+	"tip":[{
+			"word":"hat",
+			"highlight":"h_t"
+		},
+		{
+			"word":"act",
+			"highlight":"_ct"
+		},{
+			"word":"cat",
+			"highlight":"c_t"
+		}]
+},
+{
+	"word":"memorable",
+	"highlight":"me__rable",
+	"space":"mem_rable",
+	"block":["me","mo","rable"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"I tie a ribbon around my finger to make important tasks more memorable.",
+	"sentence_audio":"example_2_24896_1344374917.mp3",
+	"img":"20120804_03_19_36_165.jpg",
+	"tip":[{
+			"word":"solution",
+			"highlight":"s_lution"
+		},
+		{
+			"word":"kingdom",
+			"highlight":"kingd_m"
+		}]
+},
+{
+	"word":"hospitalize",
+	"highlight":"___pitalize",
+	"space":"h_spitalize",
+	"block":["hos","pi","ta","lize"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"Grandma was so sick that we needed to hospitalize her.",
+	"sentence_audio":"example_2_29582_1349917693.mp3",
+	"img":"20120529_03_24_36_29.jpg",
+	"tip":[{
+			"word":"top",
+			"highlight":"t_p"
+		},
+		{
+			"word":"lot",
+			"highlight":"l_t"
+		},{
+			"word":"often",
+			"highlight":"_ften"
+		}]
+},
+{
+	"word":"ordinate",
+	"highlight":"__dinate",
+	"space":"__dinate",
+	"block":["or","di","nate"],
+	"option":["a","e","i","o","u","y","r"],
+	"sentence":"The abscissa represents time, and the ordinate represents profits.",
+	"sentence_audio":"example_2_25615_1344905123.mp3",
+	"img":"20120811_03_30_16_164.jpg",
+	"tip":[{
+			"word":"order",
+			"highlight":"__der"
+		},
+		{
+			"word":"morning",
+			"highlight":"m__ning"
+		},{
+			"word":"for",
+			"highlight":"f__"
+		}]
+},
+{
+	"word":"determinedly",
+	"highlight":"de___minedly",
+	"space":"det__minedly",
+	"block":["de","ter","mined","ly"],
+	"option":["a","e","i","o","u","y","r"],
+	"sentence":"The basketball player leapt determinedly up to the rim for the dunk.",
+	"sentence_audio":"example_2_23537_1343863398.mp3",
+	"img":"20120724_03_17_12_198.jpg",
+	"tip":[{
+			"word":"center",
+			"highlight":"cent__"
+		},
+		{
+			"word":"sister",
+			"highlight":"sist__"
+		},{
+			"word":"person",
+			"highlight":"p__son"
+		}]
+},
+{
+	"word":"urbanize",
+	"highlight":"__banize",
+	"space":"__banize",
+	"block":["ur","ba","nize"],
+	"option":["a","e","i","o","u","y","r"],
+	"sentence":"The government is spending a lot of money to urbanize some parts of China. ",
+	"sentence_audio":"example_2_22378_1343686887.mp3",
+	"img":"20120611_03_31_02_51.jpg",
+	"tip":[{
+			"word":"fur",
+			"highlight":"f__"
+		},
+		{
+			"word":"turn",
+			"highlight":"t__n"
+		},{
+			"word":"urge",
+			"highlight":"__ge"
+		}]
+},
+{
+	"word":"featureless",
+	"highlight":"___tureless",
+	"space":"f__tureless",
+	"block":["fea","ture","less"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"How will I ever find my way across this featureless desert?",
+	"sentence_audio":"example_2_28127_1347309470.mp3",
+	"img":"20120904_03_20_55_315.jpg",
+	"tip":[{
+			"word":"tea",
+			"highlight":"t__"
+		},
+		{
+			"word":"leave",
+			"highlight":"l__ve"
+		},{
+			"word":"please",
+			"highlight":"pl__se"
+		}]
+},
+{
+	"word":"insightful",
+	"highlight":"in_____ful",
+	"space":"ins___tful",
+	"block":["in","sight","ful"],
+	"option":["a","e","i","o","u","y","g","h"],
+	"sentence":"Her new and insightful approach to the problem led us to the correct solution.",
+	"sentence_audio":"example_2_25997_1345072638.mp3",
+	"img":"20120523_04_42_34_151.jpg",
+	"tip":[{
+			"word":"light",
+			"highlight":"l___t"
+		},
+		{
+			"word":"sigh",
+			"highlight":"s___"
+		},{
+			"word":"high",
+			"highlight":"h___"
+		}]
+},
+{
+	"word":"radiation",
+	"highlight":"__diation",
+	"space":"r_diation",
+	"block":["ra","di","ation"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"The radiation can kill you unless you wear a protective suit.",
+	"sentence_audio":"example_2_22103_1343603753.mp3",
+	"img":"20120525_03_58_28_173.jpg",
+	"tip":[{
+			"word":"face",
+			"highlight":"f_ce"
+		},
+		{
+			"word":"mate",
+			"highlight":"m_te"
+		},{
+			"word":"hate",
+			"highlight":"h_te"
+		}]
+},
+{
+	"word":"privilege",
+	"highlight":"pri__lege",
+	"space":"priv_lege",
+	"block":["pri","vi","lege"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"I have the privilege of going to college.",
+	"sentence_audio":"WordSentence_2_11463.mp3",
+	"img":"20140713_16_58_30_876.jpg",
+	"tip":[{
+			"word":"sensible",
+			"highlight":"sens_ble"
+		},
+		{
+			"word":"destiny",
+			"highlight":"dest_ny"
+		}]
+},
+{
+	"word":"mountainous",
+	"highlight":"mountai____",
+	"space":"mountain__s",
+	"block":["moun","tai","nous"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"We were warned about the dangers of high elevation in the mountainous areas.",
+	"sentence_audio":"example_2_13103_1333177382.mp3",
+	"img":"20120311_03_54_38_315.jpg",
+	"tip":[{
+			"word":"nervous",
+			"highlight":"nerv__s"
+		},
+		{
+			"word":"serious",
+			"highlight":"seri__s"
+		},{
+			"word":"ridiculous",
+			"highlight":"ridicul__s"
+		}]
+},
+{
+	"word":"negative",
+	"highlight":"ne__tive",
+	"space":"neg_tive",
+	"block":["ne","ga","tive"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"My relatives are always so negative.",
+	"sentence_audio":"WordSentence_2_14971.mp3",
+	"img":"20140614_21_22_02_697.jpg",
+	"tip":[{
+			"word":"ago",
+			"highlight":"_go"
+		},
+		{
+			"word":"about",
+			"highlight":"_bout"
+		},{
+			"word":"camera",
+			"highlight":"camer_"
+		}]
+},
+{
+	"word":"ancestor",
+	"highlight":"ance____",
+	"space":"ancest__",
+	"block":["an","ce","stor"],
+	"option":["a","e","i","o","u","y","r"],
+	"sentence":"Our ancestors faced many disasters.",
+	"sentence_audio":"WordSentence_2_6532.mp3",
+	"img":"20140926_20_25_37_180.jpg",
+	"tip":[{
+			"word":"doctor",
+			"highlight":"doct__"
+		},
+		{
+			"word":"color",
+			"highlight":"col__"
+		},{
+			"word":"tutor",
+			"highlight":"tut__"
+		}]
+},
+{
+	"word":"poisonous",
+	"highlight":"___sonous",
+	"space":"p__sonous",
+	"block":["poi","so","nous"],
+	"option":["a","e","i","o","u","y"],
+	"sentence":"One bite from a poisonous snake could kill you.",
+	"sentence_audio":"example_2_21643_1343361254.mp3",
+	"img":"20121106_10_46_46_700.jpg",
+	"tip":[{
+			"word":"voice",
+			"highlight":"v__ce"
+		},
+		{
+			"word":"oil",
+			"highlight":"__l"
+		},{
+			"word":"coin",
+			"highlight":"c__n"
+		}]
+}]
