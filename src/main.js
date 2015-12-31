@@ -5,7 +5,6 @@ var VueResource = require('vue-resource')
 var App = require('./app.vue')
 var routerMap = require('./router')
 
-
 Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(VueAsyncData);
@@ -25,6 +24,7 @@ var directive = require('./directive')
 Object.keys(directive).forEach(function(k) {
   Vue.directive(k, directive[k]);
 });
+
 
 
 var router = new VueRouter()

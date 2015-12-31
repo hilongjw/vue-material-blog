@@ -1,10 +1,10 @@
 <template>
    <router-view></router-view>
 </template>
-
 <script>
 export default {
   data () {
+    
     return {
     }
   }
@@ -21,6 +21,14 @@ export default {
 	  font-weight: 400;
 	  src: local('Material Icons'), local('MaterialIcons-Regular'), url(assets/fonts/material.woff2) format('woff2');
 	}
+  .mdl-layout__header{
+    position: fixed;
+  }
+ 
+  .demo-layout-transparent .mdl-layout__header,
+  .demo-layout-transparent .mdl-layout__drawer-button {
+    color: white;
+  }
 
 	.material-icons {
 	  font-family: 'Material Icons';

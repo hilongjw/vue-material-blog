@@ -16,6 +16,9 @@ export default {
             resolve({
               post:response.data[self.$route.params.id-1]
             })
+            self.$nextTick(function(){
+              componentHandler.upgradeAllRegistered();
+            })
 
         }, function (response) {
         });
