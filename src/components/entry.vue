@@ -1,5 +1,9 @@
 <script>
 import mdl from 'material-design-lite/material.js'
+import AV from 'avoscloud-sdk';
+AV.initialize('2037J60rIoY1FFLAWHPTLY9M-gzGzoHsz', 'D0ShkNgI2SSL6WheRA8nK6pE');
+var Post = AV.Object.extend('Post');
+
 export default {
   data(){
     return{
@@ -12,26 +16,68 @@ export default {
   },
   asyncData: function(resolve, reject) {
     var self = this;
-        this.$http.get('dist/posts.json').then(function (response) {
-            resolve({
-              post:response.data[self.$route.params.id-1]
+    this.loadPost(0,function(tmp){
+      resolve({
+              post:tmp
             })
-            self.$nextTick(function(){
-              componentHandler.upgradeAllRegistered();
-            })
-
-        }, function (response) {
-        });
+      self.site.skip = 10;
+    })
   },
   methods:{
+    loadPost:function(skip,add){
+      var query = new AV.Query(Post);
+      var tmp = null;
+      // 这个 id 是要修改条目的 objectId，你在生成这个实例并成功保存时可以获取到，请看前面的文档
+      query.get(this.$route.params.id, {
+          success: function(post) {
+            var object = post;
+            tmp = {
+              "id": object.id,
+              "title": object.get('title'),
+              "frontcover": object.get('frontcover'),
+              "text": object.get('text'),
+              "author": object.get('author'),
+              "time": object.updatedAt,
+              "favorite": object.get('favorite'),
+              "comment": object.get('comment')
+          };
+            
+          (add)(tmp);
+
+          },
+          error: function(object, error) {
+            // 失败了.
+            console.log(object);
+          }
+      });
+    },
     tapFavorite:function(){
-      if(this.state.favorite){
-        this.state.favorite = false;
-        this.post.favorite--;
-      }else{
-        this.state.favorite = true;
-        this.post.favorite++;
-      }
+      var self = this;
+      var query = new AV.Query(Post);
+      // 这个 id 是要修改条目的 objectId，你在生成这个实例并成功保存时可以获取到，请看前面的文档
+      query.get(this.$route.params.id, {
+          success: function(post) {
+
+            
+            if(self.state.favorite){
+              self.state.favorite = false;
+              self.post.favorite--;
+              post.increment('favorite',-1);
+            }else{
+              self.state.favorite = true;
+              self.post.favorite++;
+              post.increment('favorite',1);
+            }
+
+            post.save();
+
+          },
+          error: function(object, error) {
+            // 失败了.
+            console.log(object);
+          }
+      });
+      
     },
     addComment:function(){
       this.post.comment.push({

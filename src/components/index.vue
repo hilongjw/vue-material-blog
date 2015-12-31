@@ -37,9 +37,9 @@ export default {
           var object = null;
           for (var i = 0; i < results.length; i++) {
             object = results[i];
-
+            console.log(object)
             tmp.push({
-              "id": object.get('_id'),
+              "id": object.id,
               "title": object.get('title'),
               "frontcover": object.get('frontcover'),
               "text": object.get('text'),
@@ -99,7 +99,7 @@ export default {
 
           <div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
             <div class="mdl-card__media mdl-color-text--grey-50" :style="{'background-image': 'url('+post.frontcover+')'}">
-              <h3><a v-link="'entry/'+(post.id+1)">{{post.title}}</a></h3>
+              <h3><a v-link="'entry/'+(post.id)">{{post.title}}</a></h3>
             </div>
             <div class="mdl-color-text--grey-600 mdl-card__supporting-text">{{post.text | shorttext}}
             </div>
