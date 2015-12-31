@@ -19,6 +19,9 @@ export default {
               posts:tmp
             })
       self.site.skip = 10;
+      self.$nextTick(function(){
+        componentHandler.upgradeAllRegistered();
+      })
     })
 		
 	},
@@ -37,7 +40,6 @@ export default {
           var object = null;
           for (var i = 0; i < results.length; i++) {
             object = results[i];
-            console.log(object)
             tmp.push({
               "id": object.id,
               "title": object.get('title'),
@@ -66,6 +68,9 @@ export default {
            self.posts.push(tmp[i])
         }
         self.site.skip=self.site.skip+10;
+        self.$nextTick(function(){
+          componentHandler.upgradeAllRegistered();
+        })
       })
     },
 		goEntry:function(id){

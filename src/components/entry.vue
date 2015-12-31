@@ -14,20 +14,26 @@ export default {
       post:{}
     }
   },
+  ready:function(){
+    console.log(componentHandler)
+    componentHandler.upgradeAllRegistered();
+  },
   asyncData: function(resolve, reject) {
     var self = this;
     this.loadPost(0,function(tmp){
       resolve({
               post:tmp
-            })
-      self.site.skip = 10;
+            });
+      self.$nextTick(function(){
+        componentHandler.upgradeAllRegistered();
+      })
     })
   },
   methods:{
     loadPost:function(skip,add){
       var query = new AV.Query(Post);
       var tmp = null;
-      // 这个 id 是要修改条目的 objectId，你在生成这个实例并成功保存时可以获取到，请看前面的文档
+      
       query.get(this.$route.params.id, {
           success: function(post) {
             var object = post;
@@ -54,10 +60,8 @@ export default {
     tapFavorite:function(){
       var self = this;
       var query = new AV.Query(Post);
-      // 这个 id 是要修改条目的 objectId，你在生成这个实例并成功保存时可以获取到，请看前面的文档
       query.get(this.$route.params.id, {
           success: function(post) {
-
             
             if(self.state.favorite){
               self.state.favorite = false;
