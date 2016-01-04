@@ -84,13 +84,33 @@ export default {
       
     },
     addComment:function(){
-      this.post.comment.push({
-          "avatar": "dist/img/co2.jpg",
-          "name": "cov的朋友们",
-          "time": new Date(),
-          "text": this.state.commentTmp
-      })
-      this.state.commentTmp = '';
+
+       var self = this;
+      var query = new AV.Query(Post);
+      query.get(this.$route.params.id, {
+          success: function(post) {
+            
+             post.add('comment', {
+                "avatar": "dist/img/co2.jpg",
+                "name": "cov的朋友们",
+                "time": new Date(),
+                "text": self.state.commentTmp
+            });
+             self.post.comment.push({
+                "avatar": "dist/img/co2.jpg",
+                "name": "cov的朋友们",
+                "time": new Date(),
+                "text": self.state.commentTmp
+            })
+
+            post.save();
+
+          },
+          error: function(object, error) {
+            // 失败了.
+            console.log(object);
+          }
+      });
     },
     goNext:function(type){
       var self = this;
