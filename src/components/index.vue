@@ -93,6 +93,7 @@ export default {
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">{{site.name}}</span>
         <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" v-link="{path:'/write'}">New Post</a>
           <a class="mdl-navigation__link" href="">Login</a>
           <a class="mdl-navigation__link" href="">Search</a>
           <a class="mdl-navigation__link" href="">About</a>
