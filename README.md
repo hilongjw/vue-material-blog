@@ -1,11 +1,26 @@
-# vue-material-blog
+#### Cov Blog?
 
-vue + material design lite + leancloud blog
-
+一个由vue.js, material design lite, marked.js, leancloud构建的博客应用
 preview -> [http://hilongjw.github.io/vue-material-blog/](http://hilongjw.github.io/vue-material-blog/)
 
+
+## CovBlog想做什么？
+
+* 一个简洁而优美的博客
+* markdown格式书写
+* 不依赖传统后端，在gh-pages也能部署和使用
+
+## 有问题反馈
+在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
+
+* 邮件(hilongjw#gmail.com, 把#换成@)
+* QQ: 1025503881
+* weibo: [@A2wesome](http://weibo.com/hilongjw)
+
+
+![preview3](https://github.com/hilongjw/vue-material-blog/blob/master/preview3.png) 
 ![preview1](https://github.com/hilongjw/vue-material-blog/blob/master/preview1.png) 
-![preview2](https://github.com/hilongjw/vue-material-blog/blob/master/preview2.png) 
+
 ## 安装
 
 ```bash
@@ -63,3 +78,9 @@ npm run build
           │
           └─ img        # 图片资源
 </pre>
+
+## 感谢
+
+vue.js, vue-tap, material design lite, marked.js, leancloud 
+
+向以上项目作者致敬
