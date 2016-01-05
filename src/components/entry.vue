@@ -148,6 +148,12 @@ export default {
   .faed{
     color:rgb(255,64,129);
   }
+  .entry-content{
+    border-radius: 2px;
+    padding: 20px 56px;
+    margin-bottom: 80px;
+    min-height: 300px;
+  }
 </style>
 <template>
 
@@ -183,9 +189,14 @@ export default {
                 <span class="visuallyhidden">share</span>
               </div>
             </div>
-            <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
-              {{{post.text | marked}}}
+            <div class="entry-content">
+                {{{post.text | marked}}}
             </div>
+                
+            
+            <!-- <div class="mdl-color-text-/-grey-700 mdl-card__supporting-text">
+              {{{post.text | marked}}}
+            </div> -->
             <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
               <div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

@@ -33,6 +33,7 @@ export default {
       var Post = AV.Object.extend('Post');
       var query = new AV.Query(Post);
       var tmp = [];
+      query.addDescending('updatedAt');
       query.skip(skip);
       query.limit(10);
       query.find({
