@@ -184,7 +184,7 @@ export default {
               </div>
             </div>
             <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
-              {{{post.text}}}
+              {{{post.text | marked}}}
             </div>
             <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
               <div>

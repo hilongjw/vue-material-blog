@@ -6,6 +6,11 @@ module.exports = function(router){
 		'/': {
             component: require('./components/index.vue')
         },
+        '/write': {
+            component: function (resolve) {
+			  require(['./components/write.vue'], resolve)
+			}
+        },
         'entry/:id':{
         	component: function (resolve) {
 			  require(['./components/entry.vue'], resolve)

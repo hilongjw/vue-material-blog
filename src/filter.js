@@ -30,6 +30,15 @@ var timeago = function(time) {
   return [time.getFullYear(), month, date].join('-');
 }
 
-
+var marked = function(value){
+  if(value != undefined){
+    var mark = require('marked');
+    return mark(value)
+  }else{
+    return value;
+  }
+  
+}
 exports.shorttext = shorttext;
 exports.timeago = timeago;
+exports.marked = marked;

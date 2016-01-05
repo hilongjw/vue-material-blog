@@ -38,6 +38,7 @@
     "eslint": "^1.10.3",
     "eslint-loader": "^1.1.1",
     "file-loader": "^0.8.4",
+    "marked": "^0.3.5",
     "material-design-lite": "^1.0.6",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.4.0",
