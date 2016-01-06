@@ -17,9 +17,8 @@ preview -> [http://hilongjw.github.io/vue-material-blog/](http://hilongjw.github
 * QQ: 1025503881
 * weibo: [@A2wesome](http://weibo.com/hilongjw)
 
-
-![preview3](https://github.com/hilongjw/vue-material-blog/blob/master/preview3.png) 
-![preview1](https://github.com/hilongjw/vue-material-blog/blob/master/preview1.png) 
+![preview4](https://github.com/hilongjw/vue-material-blog/blob/master/preview4.png) 
+![preview3](https://github.com/hilongjw/vue-material-blog/blob/master/preview3.png)
 
 ## 安装
 
