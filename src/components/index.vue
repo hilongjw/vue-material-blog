@@ -37,7 +37,6 @@ export default {
           var object = null;
           for (var i = 0; i < results.length; i++) {
             object = results[i];
-            console.log(object)
             tmp.push({
               "id": object.id,
               "title": object.get('title'),
@@ -75,7 +74,14 @@ export default {
 	}
 }
 </script>
-
+<style>
+@media screen and (max-width: 1024px){
+  .mdl-layout__drawer-button {
+      margin: 4px;
+      color: #fff;
+  }
+}
+</style>
 <template>
 	<div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
       <header class="mdl-layout__header mdl-layout__header--transparent">

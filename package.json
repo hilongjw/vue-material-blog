@@ -4,7 +4,7 @@
   "description": "a simple blog make by Vue and Material-design-lite",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot  --host 0.0.0.0 --config build/webpack.dev.config.js",
+    "dev": "webpack-dev-server --inline --hot  --host 0.0.0.0 --port 3000 --config build/webpack.dev.config.js",
     "build": "webpack --progress --hide-modules --config build/webpack.prod.config.js"
   },
   "repository": {
