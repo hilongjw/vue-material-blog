@@ -1,5 +1,6 @@
 <script>
 import mdl from 'material-design-lite/material.js'
+import autosize from 'autosize'
 import store from '../store/index'
 var Post = store.state.Cloud.Object.extend('Post');
 
@@ -16,6 +17,8 @@ export default {
     this.$nextTick(function(){
           componentHandler.upgradeAllRegistered();
         })
+
+    autosize(document.querySelector('#content'));
   },
   methods:{
     newPost:function(){
@@ -31,12 +34,9 @@ export default {
               "comment": []
           }, {
         success: function(post) {
-          // 成功保存之后，执行其他逻辑.
           console.log('New object created with objectId: ' + post.id);
         },
         error: function(post, error) {
-          // 失败之后执行其他逻辑
-          // error 是 AV.Error 的实例，包含有错误码和描述信息.
           console.log('Failed to create new object, with error message: ' + error.message);
         }
       });
@@ -45,25 +45,25 @@ export default {
 }
 </script>
 <style>
-  body::before {
-    background:none;
+  .writing {
+    background:#fff
   }
-  .mdl-layout__content{
+  .writing .mdl-layout__content{
       margin-top:112px;
     }
   @media screen and (max-width: 1024px){
-    .mdl-layout__content{
+    .writing .mdl-layout__content{
       margin-top:56px;
     }
   }
-  .mdl-navigation__link{
+  .writing .mdl-navigation__link{
     cursor: pointer;
   }
-  .mdl-textfield {
+  .writing .mdl-textfield {
     margin:1rem 0;
     width: 100%;
   }
-  .preview-content {
+  .writing .preview-content {
     border-radius: 2px;
     padding: 80px 56px;
     margin-bottom: 80px;
@@ -71,9 +71,7 @@ export default {
   }
 </style>
 <template>
-
-<!-- Simple header with fixed tabs. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+<div class="writing mdl-layout mdl-js-layout mdl-layout--fixed-header
             mdl-layout--fixed-tabs">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
@@ -101,11 +99,11 @@ export default {
           <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-tablet"></div>
           <div class="mdl-cell mdl-cell--8-col mdl-cell--10-col-tablet"> 
                <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" v-model="post.title">
+                <input  class="mdl-textfield__input" type="text" v-model="post.title">
                 <label class="mdl-textfield__label">Title</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield">
-                <textarea class="mdl-textfield__input" v-model="post.content" type="text" rows= "15"></textarea>
+                <textarea class="mdl-textfield__input" id="content" v-model="post.content" type="text" rows= "15"></textarea>
                 <label class="mdl-textfield__label">Content</label>
               </div>
           </div>

@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.2.1",
+    "autosize": "^3.0.14",
     "babel-core": "^6.1.2",
     "babel-loader": "^6.1.0",
     "babel-plugin-transform-runtime": "^6.1.2",
