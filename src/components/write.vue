@@ -1,9 +1,7 @@
 <script>
 import mdl from 'material-design-lite/material.js'
-import AV from 'avoscloud-sdk'
-
-AV.initialize('2037J60rIoY1FFLAWHPTLY9M-gzGzoHsz', 'D0ShkNgI2SSL6WheRA8nK6pE');
-var Post = AV.Object.extend('Post');
+import store from '../store/index'
+var Post = store.state.Cloud.Object.extend('Post');
 
 export default {
   data(){
@@ -80,7 +78,7 @@ export default {
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title" v-link="{path:'/'}">Cov Blog</span>
+      <span class="mdl-layout-title" v-link="{name:'home'}">Cov Blog</span>
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">

@@ -1,17 +1,24 @@
 module.exports = function(router){
 	router.map({
 		'*':{
-			component: require('./components/index.vue')
+			component: function (resolve) {
+			  require(['./components/index.vue'], resolve)
+			}
 		},
 		'/': {
-            component: require('./components/index.vue')
+			name:'home',
+            component: function (resolve) {
+			  require(['./components/index.vue'], resolve)
+			}
         },
         '/write': {
+        	name:'write',
             component: function (resolve) {
 			  require(['./components/write.vue'], resolve)
 			}
         },
         'entry/:id':{
+        	name:'entry',
         	component: function (resolve) {
 			  require(['./components/entry.vue'], resolve)
 			}

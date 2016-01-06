@@ -1,18 +1,18 @@
 <script>
-import mdl from 'material-design-lite/material.js'
-import AV from 'avoscloud-sdk';
-AV.initialize('2037J60rIoY1FFLAWHPTLY9M-gzGzoHsz', 'D0ShkNgI2SSL6WheRA8nK6pE');
+import mdl from 'material-design-lite/material'
+import store from '../store/index'
+
 export default {
-	data(){
-		return{
+  data(){
+    return{
       site:{
         name:'Cov Blog',
         skip:0
       },
-			posts:[]
-		}
-	},
-	asyncData: function(resolve, reject) {
+      posts:[]
+    }
+  },
+  asyncData: function(resolve, reject) {
     var self = this;
     this.loadPost(0,function(tmp){
       resolve({
@@ -23,15 +23,15 @@ export default {
         componentHandler.upgradeAllRegistered();
       })
     })
-		
-	},
-	ready:function(){
-	    window.scrollTop = 0;
-	},
-	methods:{
+    
+  },
+  ready:function(){
+      window.scrollTop = 0;
+  },
+  methods:{
     loadPost:function(skip,add){
-      var Post = AV.Object.extend('Post');
-      var query = new AV.Query(Post);
+      var Post = store.state.Cloud.Object.extend('Post');
+      var query = new store.state.Cloud.Query(Post);
       var tmp = [];
       query.addDescending('updatedAt');
       query.skip(skip);
@@ -54,7 +54,6 @@ export default {
             
           }
           (add)(tmp);
-
         },
         error: function(error) {
           console.log('Error: ' + error.code + ' ' + error.message);
@@ -74,16 +73,17 @@ export default {
         })
       })
     },
-		goEntry:function(id){
-			window.scrollTop = 0;
-			this.$route.router.go('entry/'+id)
-		}
-	}
+    goEntry:function(id){
+      window.scrollTop = 0;
+      this.$route.router.go('entry/'+id)
+    }
+  }
 }
 </script>
-
+<style>
+</style>
 <template>
-	<div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
+  <div class="cov-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
       <header class="mdl-layout__header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
           <!-- Title -->
@@ -102,7 +102,7 @@ export default {
       </div>
       <main class="mdl-layout__content">
 
-        <div class="demo-blog__posts mdl-grid">
+        <div class="cov-blog__posts mdl-grid">
 
           <div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
             <div class="mdl-card__media mdl-color-text--grey-50" :style="{'background-image': 'url('+post.frontcover+')'}">

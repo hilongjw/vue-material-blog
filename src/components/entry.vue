@@ -1,8 +1,8 @@
 <script>
 import mdl from 'material-design-lite/material.js'
-import AV from 'avoscloud-sdk';
-AV.initialize('2037J60rIoY1FFLAWHPTLY9M-gzGzoHsz', 'D0ShkNgI2SSL6WheRA8nK6pE');
-var Post = AV.Object.extend('Post');
+import store from '../store/index'
+var Cloud = store.state.Cloud;
+var Post = Cloud.Object.extend('Post');
 
 export default {
   data(){
@@ -31,7 +31,7 @@ export default {
   },
   methods:{
     loadPost:function(skip,add){
-      var query = new AV.Query(Post);
+      var query = new Cloud.Query(Post);
       var tmp = null;
       
       query.get(this.$route.params.id, {
@@ -59,7 +59,7 @@ export default {
     },
     tapFavorite:function(){
       var self = this;
-      var query = new AV.Query(Post);
+      var query = new Cloud.Query(Post);
       query.get(this.$route.params.id, {
           success: function(post) {
             
@@ -86,7 +86,7 @@ export default {
     addComment:function(){
 
        var self = this;
-      var query = new AV.Query(Post);
+      var query = new Cloud.Query(Post);
       query.get(this.$route.params.id, {
           success: function(post) {
             
@@ -157,14 +157,14 @@ export default {
 </style>
 <template>
 
-<div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+<div class="cov-blog cov-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
       <main class="mdl-layout__content">
         <div class="demo-back">
           <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" v-link="'/'" title="go back" role="button">
             <i class="material-icons" role="presentation">arrow_back</i>
           </a>
         </div>
-        <div class="demo-blog__posts mdl-grid">
+        <div class="cov-blog__posts mdl-grid">
           <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
             <div class="mdl-card__media mdl-color-text--grey-50">
               <h3>{{post.title}}</h3>
