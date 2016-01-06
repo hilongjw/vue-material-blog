@@ -29,6 +29,19 @@ export default {
       window.scrollTop = 0;
   },
   methods:{
+    showLogin:function(){
+      store.actions.showLogin();
+      this.$nextTick(function(){
+        componentHandler.upgradeAllRegistered();
+      })
+    },
+    hideLogin:function(event){
+      console.log(event)
+      store.actions.hideLogin();
+      this.$nextTick(function(){
+        componentHandler.upgradeAllRegistered();
+      })
+    },
     loadPost:function(skip,add){
       var Post = store.state.Cloud.Object.extend('Post');
       var query = new store.state.Cloud.Query(Post);
@@ -83,7 +96,7 @@ export default {
 <style>
 </style>
 <template>
-  <div class="cov-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
+  <div @click="hideLogin(e)" class="cov-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
       <header class="mdl-layout__header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
           <!-- Title -->
@@ -95,7 +108,7 @@ export default {
         <span class="mdl-layout-title">{{site.name}}</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" v-link="{path:'/write'}">New Post</a>
-          <a class="mdl-navigation__link" href="">Login</a>
+          <a class="mdl-navigation__link" v-tap="showLogin">Login</a>
           <a class="mdl-navigation__link" href="">Search</a>
           <a class="mdl-navigation__link" href="">About</a>
         </nav>

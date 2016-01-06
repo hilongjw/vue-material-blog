@@ -9,7 +9,10 @@ Vue.use(Vuex)
 
 const state = {
   learn:0,
-  Cloud:AV
+  Cloud:AV,
+  login:{
+    show:false
+  }
 }
 
 const store = new Vuex.Store({

@@ -1,5 +1,14 @@
+<script>
+  import login from './components/login.vue'
+  export default {
+    components:{
+      'login':login
+    }
+  }
+</script>
 <template>
    <router-view></router-view>
+   <login></login>
 </template>
 <style src="material-design-lite/material.css"></style>
 <style>

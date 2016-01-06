@@ -17,6 +17,12 @@ module.exports = function(router){
 			  require(['./components/write.vue'], resolve)
 			}
         },
+        '/login': {
+        	name:'write',
+            component: function (resolve) {
+			  require(['./components/login.vue'], resolve)
+			}
+        },
         'entry/:id':{
         	name:'entry',
         	component: function (resolve) {

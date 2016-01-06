@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from './mutation-types'
+import { INCREMENT, DECREMENT,SHOWLOGIN ,HIDELOGIN} from './mutation-types'
 
 export default {
   [INCREMENT] (state) {
@@ -6,5 +6,11 @@ export default {
   },
   [DECREMENT] (state) {
     state.learn--
+  },
+  [SHOWLOGIN] (state) {
+    state.login.show = true
+  },
+  [HIDELOGIN] (state) {
+    state.login.show = false
   }
 }
