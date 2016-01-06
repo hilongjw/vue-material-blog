@@ -31,16 +31,22 @@ export default {
   methods:{
     showLogin:function(){
       store.actions.showLogin();
+      document.getElementById('indexDrawer').setAttribute('class','mdl-layout__drawer')
+      document.getElementsByClassName('mdl-layout__obfuscator')[0].setAttribute('class','mdl-layout__obfuscator')
+
+      
       this.$nextTick(function(){
         componentHandler.upgradeAllRegistered();
       })
     },
     hideLogin:function(event){
-      console.log(event)
+      if(event.target == document.getElementById('showLogin')){
+        return true;
+      }
       store.actions.hideLogin();
-      this.$nextTick(function(){
-        componentHandler.upgradeAllRegistered();
-      })
+      // this.$nextTick(function(){
+      //   componentHandler.upgradeAllRegistered();
+      // })
     },
     loadPost:function(skip,add){
       var Post = store.state.Cloud.Object.extend('Post');
@@ -96,7 +102,7 @@ export default {
 <style>
 </style>
 <template>
-  <div @click="hideLogin(e)" class="cov-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
+  <div @click="hideLogin" class="cov-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
       <header class="mdl-layout__header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
           <!-- Title -->
@@ -104,11 +110,11 @@ export default {
           
         </div>
       </header>
-      <div class="mdl-layout__drawer">
+      <div id="indexDrawer" class="mdl-layout__drawer">
         <span class="mdl-layout-title">{{site.name}}</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" v-link="{path:'/write'}">New Post</a>
-          <a class="mdl-navigation__link" v-tap="showLogin">Login</a>
+          <a class="mdl-navigation__link" id="showLogin" v-tap="showLogin">Login</a>
           <a class="mdl-navigation__link" href="">Search</a>
           <a class="mdl-navigation__link" href="">About</a>
         </nav>
@@ -143,7 +149,6 @@ export default {
           </nav>
         </div>
       </main>
-      <div class="mdl-layout__obfuscator"></div>
     </div>
     
 </template>
