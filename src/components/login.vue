@@ -54,19 +54,19 @@ export default {
         })
     },
     Signup(){
-      var isEmail = new RegExp("[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])");
-      console.log(this.sign.username)
-      console.log(isEmail.test(this.sign.username))
+      var self = this;
+      let isEmail = store.state.common.isEmail;
+
       if(!isEmail.test(this.sign.username)){
         this.showModal('提示','请输入正确的邮件地址')
         return false;
       }
 
-      if(this.sign.password.size<6){
+      if(this.sign.password.length<6){
         this.showModal('提示','请使用更加复杂的密码')
         return false;
       }
-
+      
       var user = new store.state.Cloud.User();
       user.set('username', this.sign.username);
       user.set('password', this.sign.password);
@@ -75,11 +75,37 @@ export default {
 
       user.signUp(null, {
         success: function(user) {
-          this.showModal('提示','注册成功啦')
+          self.showModal('提示','注册成功啦,赶快登录吧')
+          self.showLogin();
+          self.login.username = self.sign.username;
+          self.login.password = self.sign.password;
+
         },
         error: function(user, error) {
-          this.showModal('提示','注册失败'+ error.message)
+          self.showModal('提示','注册失败'+ error.message)
           console.log('Error: ' + error.code + ' ' + error.message);
+        }
+      });
+    },
+    logIn(){
+      var self = this;
+      let isEmail = store.state.common.isEmail;
+      if(!isEmail.test(this.login.username)){
+        this.showModal('提示','请输入正确的邮件地址')
+        return false;
+      }
+
+      if(this.login.password.length<6){
+        this.showModal('提示','请使用更加复杂的密码')
+        return false;
+      }
+
+      store.state.Cloud.User.logIn(this.login.username, this.login.password, {
+        success: function(user) {
+          store.actions.hideLogin()
+        },
+        error: function(user, error) {
+          self.showModal('提示','登录失败'+ error)
         }
       });
     }
@@ -126,7 +152,7 @@ export default {
       <div class="mdl-card__supporting-text">
         <div class="input-box">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" pattern="[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?" v-model="login.username" type="text">
+            <input class="mdl-textfield__input" pattern="([A-Za-z0-9][-A-Za-z0-9]+\@)+([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}" v-model="login.username" type="text">
             <label class="mdl-textfield__label">E-mail</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -139,7 +165,7 @@ export default {
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="showSign">
           Sign up
         </a>
-         <a class="login-btn mdl-button mdl-button--colored mdl-js-button  mdl-button--raised mdl-js-ripple-effect">
+         <a class="login-btn mdl-button mdl-button--colored mdl-js-button  mdl-button--raised mdl-js-ripple-effect" v-tap="logIn">
           Log in
         </a>
       </div>
@@ -154,7 +180,7 @@ export default {
       <div class="mdl-card__supporting-text">
         <div class="input-box">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" pattern="[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?" v-model="sign.username" type="text">
+            <input class="mdl-textfield__input" pattern="([A-Za-z0-9][-A-Za-z0-9]+\@)+([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}" v-model="sign.username" type="text">
             <label class="mdl-textfield__label">E-mail</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
