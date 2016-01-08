@@ -63,6 +63,7 @@ export default {
       query.addDescending('updatedAt');
       query.skip(skip);
       query.limit(10);
+      query.include('author')
       query.find({
         success: function(results) {
           var object = null;
@@ -73,7 +74,7 @@ export default {
               "title": object.get('title'),
               "frontcover": object.get('frontcover'),
               "text": object.get('text'),
-              "author": object.get('author'),
+              "author": object.get('author').getUsername(),
               "time": object.updatedAt,
               "favorite": object.get('favorite'),
               "comment": object.get('comment')
@@ -131,9 +132,9 @@ export default {
 
         <div class="cov-blog__posts mdl-grid">
 
-          <div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
+          <div v-link="'entry/'+(post.id)" class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
             <div class="mdl-card__media mdl-color-text--grey-50" :style="{'background-image': 'url('+post.frontcover+')'}">
-              <h3><a v-link="'entry/'+(post.id)">{{post.title}}</a></h3>
+              <h3><a >{{post.title}}</a></h3>
             </div>
             <div class="mdl-color-text--grey-600 mdl-card__supporting-text">{{post.text | shorttext}}
             </div>

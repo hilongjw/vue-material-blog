@@ -57,6 +57,7 @@ export default {
               "frontcover": object.get('frontcover'),
               "text": object.get('text'),
               "author": object.get('author').getUsername(),
+              'avatar': object.get('author').get('avatar'),
               "time": object.updatedAt,
               "favorite": object.get('favorite'),
               "comment":[]
@@ -188,10 +189,20 @@ export default {
     margin-bottom: 80px;
     min-height: 300px;
   }
+  .entry .comment > .comment__actions > button {
+    background:none;
+  }
+  .entry .comments > .comment{
+    margin-bottom: 2rem;
+  }
+  .minilogo img{
+    width: 100%;
+    height: 100%;
+  }
 </style>
 <template>
 
-<div class="cov-blog cov-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+<div class="cov-blog entry cov-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
       <main class="mdl-layout__content">
         <div class="demo-back">
           <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" v-link="'/'" title="go back" role="button">
@@ -204,7 +215,7 @@ export default {
               <h3>{{post.title}}</h3>
             </div>
             <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-              <div class="minilogo"></div>
+              <div class="minilogo"><img :src="post.avatar"></div>
               <div>
                 <strong>{{post.author}}</strong>
                 <span>{{post.time | timeago}}</span>
@@ -226,11 +237,6 @@ export default {
             <div class="entry-content">
                 {{{post.text | marked}}}
             </div>
-                
-            
-            <!-- <div class="mdl-color-text-/-grey-700 mdl-card__supporting-text">
-              {{{post.text | marked}}}
-            </div> -->
             <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
               <div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -252,17 +258,6 @@ export default {
                 <div class="comment__text">
                   {{comment.text}}
                 </div>
-                <nav class="comment__actions">
-                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                    <i class="material-icons" role="presentation">thumb_up</i><span class="visuallyhidden">like comment</span>
-                  </button>
-                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                    <i class="material-icons" role="presentation">thumb_down</i><span class="visuallyhidden">dislike comment</span>
-                  </button>
-                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                    <i class="material-icons" role="presentation">share</i><span class="visuallyhidden">share comment</span>
-                  </button>
-                </nav>
               </div>
             </div>
           </div>
