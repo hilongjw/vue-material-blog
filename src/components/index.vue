@@ -125,14 +125,14 @@ export default {
           <a class="mdl-navigation__link" v-link="{path:'/write'}">New Post</a>
           <a class="mdl-navigation__link" id="showLogin" v-tap="showLogin">Login</a>
           <a class="mdl-navigation__link" v-tap="showModal" >Search</a>
-          <a class="mdl-navigation__link">About</a>
+          <a class="mdl-navigation__link" v-link="'entry/568f419000b0bca077d8caf4'">About</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
 
         <div class="cov-blog__posts mdl-grid">
 
-          <div v-link="'entry/'+(post.id)" class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
+          <div v-tap="goEntry(post.id)" class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
             <div class="mdl-card__media mdl-color-text--grey-50" :style="{'background-image': 'url('+post.frontcover+')'}">
               <h3><a >{{post.title}}</a></h3>
             </div>

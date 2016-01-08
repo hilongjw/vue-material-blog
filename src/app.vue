@@ -589,7 +589,19 @@ body .cov-blog {
   background-color: white;
   box-sizing: border-box;
 }
-
+@media all and (max-width: 768px) {
+    .cov-blog.mdl-layout .mdl-layout__content {
+      padding-top: 0!important;
+    }
+    .mdl-layout__drawer-button {
+        margin: 4px;
+        color: rgb(255, 255, 255);
+    }
+    .login-card-wide.mdl-card {
+        width: 90%!important;
+        margin: auto;
+    }
+  }
 </style>
 
 <style src="./assets/css/normalize.css"></style>
