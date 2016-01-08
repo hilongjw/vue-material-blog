@@ -45,9 +45,16 @@ export default {
       }
       store.actions.hideLogin();
       store.actions.hideSign();
-      // this.$nextTick(function(){
-      //   componentHandler.upgradeAllRegistered();
-      // })
+    },
+    showModal(){
+      store.actions.showModal('提示','你的文章太过糟糕，不能完成提交');
+      document.getElementById('indexDrawer').setAttribute('class','mdl-layout__drawer')
+      document.getElementsByClassName('mdl-layout__obfuscator')[0].setAttribute('class','mdl-layout__obfuscator')
+
+      
+      this.$nextTick(function(){
+        componentHandler.upgradeAllRegistered();
+      })
     },
     loadPost:function(skip,add){
       var Post = store.state.Cloud.Object.extend('Post');
@@ -116,8 +123,8 @@ export default {
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" v-link="{path:'/write'}">New Post</a>
           <a class="mdl-navigation__link" id="showLogin" v-tap="showLogin">Login</a>
-          <a class="mdl-navigation__link" href="">Search</a>
-          <a class="mdl-navigation__link" href="">About</a>
+          <a class="mdl-navigation__link" v-tap="showModal" >Search</a>
+          <a class="mdl-navigation__link">About</a>
         </nav>
       </div>
       <main class="mdl-layout__content">

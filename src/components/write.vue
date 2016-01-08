@@ -21,23 +21,30 @@ export default {
     autosize(document.querySelector('#content'));
   },
   methods:{
-    newPost:function(){
+    showModal(title,text){
+      store.actions.showModal(title,text);
+      
+      this.$nextTick(function(){
+        componentHandler.upgradeAllRegistered();
+      })
+    },
+    newPost(){
       var self = this;
       var post = new Post();
 
       post.save({
               "title": self.post.title,
-              "frontcover": 'dist/img/shopping.jpg',
+              "frontcover": 'dist/shopping.jpg',
               "text": self.post.content,
               "author": 'longjw',
               "favorite": 0,
               "comment": []
           }, {
         success: function(post) {
-          console.log('New object created with objectId: ' + post.id);
+          self.showModal('提示','你的文章写的太棒了，已经完成提交。')
         },
         error: function(post, error) {
-          console.log('Failed to create new object, with error message: ' + error.message);
+          self.showModal('提示', '你的文章写的太棒了，但是由于一些故障，没有完成提交。')
         }
       });
     }

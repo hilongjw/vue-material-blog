@@ -15,6 +15,11 @@ const state = {
   },
   sign:{
     show:false
+  },
+  modal:{
+    show:false,
+    title:'',
+    text:''
   }
 }
 

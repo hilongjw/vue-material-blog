@@ -1,15 +1,18 @@
 <script>
   import login from './components/login.vue'
+  import modal from './components/modal.vue'
 
   export default {
     components:{
-      'login':login
+      'login':login,
+      'modal':modal
     }
   }
 </script>
 <template>
    <router-view></router-view>
    <login></login>
+   <modal></modal>
 </template>
 <style src="material-design-lite/material.css"></style>
 <style>
