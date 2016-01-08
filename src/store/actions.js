@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT ,SHOWLOGIN ,HIDELOGIN} from './mutation-types'
+import { INCREMENT, DECREMENT ,SHOWLOGIN ,HIDELOGIN,SHOWSIGN ,HIDESIGN } from './mutation-types'
 
 export default {
 
@@ -6,6 +6,8 @@ export default {
   cut: DECREMENT,
   showLogin: SHOWLOGIN,
   hideLogin:HIDELOGIN,
+  showSign: SHOWSIGN,
+  hideSign:HIDESIGN,
 
   incrementIfOdd: ({ dispatch, state }) => {
     if ((state.count + 1) % 2 === 0) {

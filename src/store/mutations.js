@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT,SHOWLOGIN ,HIDELOGIN} from './mutation-types'
+import { INCREMENT, DECREMENT ,SHOWLOGIN ,HIDELOGIN,SHOWSIGN ,HIDESIGN} from './mutation-types'
 
 export default {
   [INCREMENT] (state) {
@@ -12,5 +12,11 @@ export default {
   },
   [HIDELOGIN] (state) {
     state.login.show = false
+  },
+  [SHOWSIGN] (state) {
+    state.sign.show = true
+  },
+  [HIDESIGN] (state) {
+    state.sign.show = false
   }
 }

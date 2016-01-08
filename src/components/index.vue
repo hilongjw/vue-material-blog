@@ -44,6 +44,7 @@ export default {
         return true;
       }
       store.actions.hideLogin();
+      store.actions.hideSign();
       // this.$nextTick(function(){
       //   componentHandler.upgradeAllRegistered();
       // })

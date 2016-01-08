@@ -12,6 +12,9 @@ const state = {
   Cloud:AV,
   login:{
     show:false
+  },
+  sign:{
+    show:false
   }
 }
 
