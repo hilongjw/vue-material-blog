@@ -35,6 +35,13 @@ export default {
     })
   },
   methods:{
+    showModal(title,text){
+      store.actions.showModal(title,text);
+      
+      this.$nextTick(function(){
+        componentHandler.upgradeAllRegistered();
+      })
+    },
     loadPost:function(skip,add){
       var self = this;
       var query = new Cloud.Query(Post);
@@ -60,8 +67,7 @@ export default {
 
           },
           error: function(object, error) {
-            // 失败了.
-            console.log(object);
+            self.showModal('提示','加载失败，我也不知道怎么回事')
           }
       });
     },
@@ -107,8 +113,7 @@ export default {
 
           },
           error: function(object, error) {
-            // 失败了.
-            console.log(object);
+            self.showModal('提示','点赞失败，我也不知道怎么回事')
           }
       });
       
@@ -134,10 +139,10 @@ export default {
           "text": self.state.commentTmp
         }, {
         success: function(comment) {
-          console.log('added')
+          self.loadComment()
         },
         error: function(comment, error) {
-          console.log('Failed to create new object, with error message: ' + error.message);
+          self.showModal('提示','加载失败，'+error.message)
         }
       });
     },
