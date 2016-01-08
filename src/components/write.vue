@@ -31,14 +31,19 @@ export default {
     newPost(){
       var self = this;
       var post = new Post();
+      
+      var currentUser = store.state.Cloud.User.current();
+      if (!currentUser) {
+        self.showModal('提示','你还没登录呢，登录之后才能提交文章哦')
+        return false;
+      }
 
       post.save({
               "title": self.post.title,
               "frontcover": 'dist/shopping.jpg',
               "text": self.post.content,
-              "author": 'longjw',
-              "favorite": 0,
-              "comment": []
+              "author": currentUser,
+              "favorite": 0
           }, {
         success: function(post) {
           self.showModal('提示','你的文章写的太棒了，已经完成提交。')

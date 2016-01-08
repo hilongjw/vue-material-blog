@@ -3,6 +3,7 @@ import mdl from 'material-design-lite/material.js'
 import store from '../store/index'
 var Cloud = store.state.Cloud;
 var Post = Cloud.Object.extend('Post');
+var Comment = Cloud.Object.extend('Comment');
 
 export default {
   data(){
@@ -11,7 +12,9 @@ export default {
         favorite:false,
         commentTmp:''
       },
-      post:{}
+      post:{
+        comment:[]
+      }
     }
   },
   ready:function(){
@@ -24,37 +27,64 @@ export default {
       resolve({
               post:tmp
             });
+
       self.$nextTick(function(){
         componentHandler.upgradeAllRegistered();
       })
+
     })
   },
   methods:{
     loadPost:function(skip,add){
+      var self = this;
       var query = new Cloud.Query(Post);
       var tmp = null;
-      
+      query.include('author');
       query.get(this.$route.params.id, {
           success: function(post) {
             var object = post;
+            
             tmp = {
               "id": object.id,
               "title": object.get('title'),
               "frontcover": object.get('frontcover'),
               "text": object.get('text'),
-              "author": object.get('author'),
+              "author": object.get('author').getUsername(),
               "time": object.updatedAt,
               "favorite": object.get('favorite'),
-              "comment": object.get('comment')
+              "comment":[]
           };
             
           (add)(tmp);
+          self.loadComment()
 
           },
           error: function(object, error) {
             // 失败了.
             console.log(object);
           }
+      });
+    },
+    loadComment(){
+      var self = this;
+      var tmp = [];
+      var query = new Cloud.Query(Comment);
+      var post = new Post();
+      post.id = this.$route.params.id;
+      query.include('author')
+      query.equalTo('post', post);
+      query.find({
+        success: function(comments) {
+          for (var c of comments) {
+            tmp.push({
+              "avatar": c.get('author').get('avatar'),
+              "name": c.get('author').getUsername(),
+              "time": c.updatedAt,
+              "text": c.get('text'),
+            })
+          }
+          self.post.comment = tmp;
+        }
       });
     },
     tapFavorite:function(){
@@ -85,31 +115,30 @@ export default {
     },
     addComment:function(){
 
-       var self = this;
+      var self = this;
       var query = new Cloud.Query(Post);
-      query.get(this.$route.params.id, {
-          success: function(post) {
-            
-             post.add('comment', {
-                "avatar": "dist/img/co2.jpg",
-                "name": "cov的朋友们",
-                "time": new Date(),
-                "text": self.state.commentTmp
-            });
-             self.post.comment.push({
-                "avatar": "dist/img/co2.jpg",
-                "name": "cov的朋友们",
-                "time": new Date(),
-                "text": self.state.commentTmp
-            })
+      var post = new Post();
+      var comment = new Comment();
+      
+      var currentUser = store.state.Cloud.User.current();
+      if (!currentUser) {
+        self.showModal('提示','你还没登录呢，登录之后才能评论文章哦')
+        return false;
+      }
 
-            post.save();
-
-          },
-          error: function(object, error) {
-            // 失败了.
-            console.log(object);
-          }
+      post.id = this.$route.params.id;
+      comment.set('post', post);
+      comment.save({
+          "author": currentUser,
+          "time": new Date(),
+          "text": self.state.commentTmp
+        }, {
+        success: function(comment) {
+          console.log('added')
+        },
+        error: function(comment, error) {
+          console.log('Failed to create new object, with error message: ' + error.message);
+        }
       });
     },
     goNext:function(type){
@@ -234,7 +263,7 @@ export default {
           </div>
 
           <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-            <a v-tap="goNext('next')" class="demo-nav__button">
+            <a v-tap="loadComment" class="demo-nav__button">
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
               </button>
