@@ -215,7 +215,7 @@ export default {
         </div>
         <div class="cov-blog__posts mdl-grid">
           <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-            <div class="mdl-card__media mdl-color-text--grey-50">
+            <div class="mdl-card__media mdl-color-text--grey-50" :style="{'background-image': 'url('+post.frontcover+')'}">
               <h3>{{post.title}}</h3>
               <div class="mdl-card__menu">
               <button id="demo-menu-lower-right"

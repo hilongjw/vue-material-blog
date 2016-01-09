@@ -32,7 +32,7 @@ git clone https://github.com/hilongjw/vue-material-blog.git
 npm install
 ```
 
-启动服务(http://localhost:8080)
+启动服务(http://localhost:3000)
 ``` bash
 npm run dev
 ```

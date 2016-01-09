@@ -133,11 +133,19 @@ export default {
 
 .writing .preview-content {
     border-radius: 2px;
-    padding: 80px 56px;
+    padding: 220px 56px 56px 56px;
     margin-bottom: 80px;
     min-height: 600px;
+    position: relative;
 }
 
+.writing .preview-content .mdl-card__title{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 200px;
+}
 .writing .mdl-layout__header-row {
     height: 56px;
     padding: 0 16px 0 0px;
@@ -224,7 +232,10 @@ export default {
                     <div class="preview-container mdl-grid">
                         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
                         <div class="preview-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-                            <h3>{{post.title}}</h3> {{{post.content | marked}}}
+                        <div class="mdl-card__title" :style="{'background-image': 'url('+(post.frontImg == null ? 'dist/welcome_card.jpg' : post.frontImg)+')'}">
+                                <h2 class="mdl-card__title-text" >{{post.title=='' ? '文章的封面图' : post.title}}</h2>
+                            </div>
+                            <!-- <h3>{{post.title}}</h3> --> {{{post.content | marked}}}
                         </div>
                     </div>
                 </div>
