@@ -6,22 +6,7 @@ var Post = store.state.Cloud.Object.extend('Post');
 
 export default {
     data() {
-            var logined = true;
-            var name = '';
-            var currentUser = store.state.Cloud.User.current();
-            if (!currentUser) {
-                logined = false
-            } else {
-                name = currentUser.getUsername()
-            }
-
             return {
-                info: {
-                    logined: logined,
-                    user: {
-                        name: name
-                    }
-                },
                 post: {
                     title: '',
                     content: ""
@@ -34,6 +19,11 @@ export default {
             })
 
             autosize(document.querySelector('#content'));
+        },
+        computed:{
+            loginState(){
+              return store.state.logined
+            }
         },
         methods: {
             showLogin() {
@@ -69,7 +59,14 @@ export default {
                         self.showModal('提示', '你还没登录呢，登录之后才能提交文章哦')
                         return false;
                     }
-
+                    if(self.post.title==''){
+                        self.showModal('提示', '标题都没有写呢')
+                        return false;
+                    }
+                    if(self.post.content==''){
+                        self.showModal('提示', '文章内容都没有写呢')
+                        return false;
+                    }
                     post.save({
                         "title": self.post.title,
                         "frontcover": 'dist/shopping.jpg',

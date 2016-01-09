@@ -1,12 +1,7 @@
-import { INCREMENT, DECREMENT ,SHOWLOGIN ,HIDELOGIN,SHOWSIGN ,HIDESIGN,SHOWMODAL,HIDEMODAL} from './mutation-types'
+import { SHOWLOGIN ,HIDELOGIN,SHOWSIGN ,HIDESIGN,SHOWMODAL,HIDEMODAL,LOGINING,LOGOUTING} from './mutation-types'
 
 export default {
-  [INCREMENT] (state) {
-    state.learn++
-  },
-  [DECREMENT] (state) {
-    state.learn--
-  },
+ 
   [SHOWLOGIN] (state) {
     state.login.show = true
   },
@@ -28,5 +23,13 @@ export default {
     state.modal.show = false
     state.modal.title = ''
     state.modal.text = ''
+  },
+  [LOGINING] (state,user){
+    state.logined.value = true
+    state.logined.user = user
+  },
+  [LOGOUTING] (state){
+    state.logined.value = false
+    state.logined.user = null
   }
 }

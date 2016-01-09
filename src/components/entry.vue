@@ -7,6 +7,7 @@ var Comment = Cloud.Object.extend('Comment');
 
 export default {
   data(){
+  
     return{
       state:{
         favorite:false,
@@ -15,6 +16,11 @@ export default {
       post:{
         comment:[]
       }
+    }
+  },
+  computed:{
+    loginState(){
+      return store.state.logined
     }
   },
   ready:function(){
@@ -195,10 +201,6 @@ export default {
   .entry .comments > .comment{
     margin-bottom: 2rem;
   }
-  .minilogo img{
-    width: 100%;
-    height: 100%;
-  }
   
   
 </style>
@@ -227,14 +229,19 @@ export default {
                  {{post.favorite}} <i class="material-icons" role="presentation" :class="{'faed':state.favorite}">favorite</i>
                 <span class="visuallyhidden">favorites</span>
               </div>
-              <div>
-                <i class="material-icons" role="presentation">bookmark</i>
-                <span class="visuallyhidden">bookmark</span>
-              </div>
-              <div>
-                <i class="material-icons" role="presentation">share</i>
-                <span class="visuallyhidden">share</span>
-              </div>
+              <button id="demo-menu-lower-right"
+                      class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+              </button>
+
+              <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                  for="demo-menu-lower-right">
+                <!-- <li class="mdl-menu__item">收藏</li> -->
+                <li class="mdl-menu__item">分享</li>
+                <li disabled v-if="!loginState.value" class="mdl-menu__item">编辑</li>
+                <li v-if="loginState.value" class="mdl-menu__item">编辑</li>
+
+              </ul>
             </div>
             <div class="entry-content">
                 {{{post.text | marked}}}

@@ -1,10 +1,24 @@
 <script>
 import mdl from 'material-design-lite/material'
 import store from '../store/index'
-
+var Cloud = store.state.Cloud;
 export default {
   data(){
+    var logined = true;
+    var name = '';
+    var currentUser = Cloud.User.current();
+    if (!currentUser) {
+        logined = false
+    } else {
+        name = currentUser.getUsername()
+    }
     return{
+      info: {
+          logined: logined,
+          user: {
+              name: name
+          }
+      },
       site:{
         name:'Cov Blog',
         skip:0
@@ -27,6 +41,11 @@ export default {
   },
   ready:function(){
       window.scrollTop = 0;
+  },
+  computed:{
+    loginState(){
+      return store.state.logined
+    }
   },
   methods:{
     showLogin:function(){
@@ -57,8 +76,8 @@ export default {
       })
     },
     loadPost:function(skip,add){
-      var Post = store.state.Cloud.Object.extend('Post');
-      var query = new store.state.Cloud.Query(Post);
+      var Post = Cloud.Object.extend('Post');
+      var query = new Cloud.Query(Post);
       var tmp = [];
       query.addDescending('updatedAt');
       query.skip(skip);
@@ -75,6 +94,7 @@ export default {
               "frontcover": object.get('frontcover'),
               "text": object.get('text'),
               "author": object.get('author').getUsername(),
+              "avatar":object.get('author').get('avatar'),
               "time": object.updatedAt,
               "favorite": object.get('favorite'),
               "comment": object.get('comment')
@@ -122,8 +142,9 @@ export default {
       <div id="indexDrawer" class="mdl-layout__drawer">
         <span class="mdl-layout-title">{{site.name}}</span>
         <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" v-if="loginState.value" >{{loginState.user.getUsername()}}</a>
+          <a class="mdl-navigation__link" id="showLogin" v-if="!loginState.value" v-tap="showLogin">Login</a>
           <a class="mdl-navigation__link" v-link="{path:'/write'}">New Post</a>
-          <a class="mdl-navigation__link" id="showLogin" v-tap="showLogin">Login</a>
           <a class="mdl-navigation__link" v-tap="showModal" >Search</a>
           <a class="mdl-navigation__link" v-link="'entry/568f419000b0bca077d8caf4'">About</a>
         </nav>
@@ -139,7 +160,7 @@ export default {
             <div class="mdl-color-text--grey-600 mdl-card__supporting-text">{{post.text | shorttext}}
             </div>
             <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-              <div class="minilogo"></div>
+              <div class="minilogo"><img :src="post.avatar" alt=""></div>
               <div>
                 <strong>{{post.author}}</strong>
                 <span>{{post.time | timeago}}</span>

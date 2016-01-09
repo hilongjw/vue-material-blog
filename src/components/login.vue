@@ -102,10 +102,11 @@ export default {
 
       store.state.Cloud.User.logIn(this.login.username, this.login.password, {
         success: function(user) {
+          store.actions.logIning(user)
           store.actions.hideLogin()
         },
         error: function(user, error) {
-          self.showModal('提示','登录失败'+ error)
+          self.showModal('提示','登录失败'+ error.message)
         }
       });
     }

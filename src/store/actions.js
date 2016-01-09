@@ -1,25 +1,13 @@
-import {INCREMENT, DECREMENT ,SHOWLOGIN ,HIDELOGIN,SHOWSIGN ,HIDESIGN,SHOWMODAL,HIDEMODAL} from './mutation-types'
+import * as cov from './mutation-types'
 
 export default {
 
-  add: INCREMENT,
-  cut: DECREMENT,
-  showLogin: SHOWLOGIN,
-  hideLogin:HIDELOGIN,
-  showSign: SHOWSIGN,
-  hideSign:HIDESIGN,
-  showModal: SHOWMODAL,
-  hideModal:HIDEMODAL,
-
-  incrementIfOdd: ({ dispatch, state }) => {
-    if ((state.count + 1) % 2 === 0) {
-      dispatch(INCREMENT)
-    }
-  },
-
-  incrementAsync: ({ dispatch }) => {
-    setTimeout(() => {
-      dispatch(INCREMENT)
-    }, 1000)
-  }
+  showLogin: cov.SHOWLOGIN,
+  hideLogin:cov.HIDELOGIN,
+  showSign: cov.SHOWSIGN,
+  hideSign:cov.HIDESIGN,
+  showModal: cov.SHOWMODAL,
+  hideModal:cov.HIDEMODAL,
+  logIning:cov.LOGINING,
+  logOuting:cov.LOGOUTING
 }

@@ -562,12 +562,12 @@ body .cov-blog {
 .cov-blog .minilogo {
   width: 44px;
   height: 44px;
-  background-image: url('assets/img/avatar.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 50%;
-  border-radius: 22px;
-  background-color: #F5F5F5;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.cov-blog .minilogo img{
+  width: 100%;
+  height: 100%;
 }
 
 /* Fixes for IE 10 */
