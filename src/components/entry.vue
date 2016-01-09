@@ -217,6 +217,19 @@ export default {
           <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
             <div class="mdl-card__media mdl-color-text--grey-50">
               <h3>{{post.title}}</h3>
+              <div class="mdl-card__menu">
+              <button id="demo-menu-lower-right"
+                      class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+              </button>
+
+              <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                  for="demo-menu-lower-right">
+                <li disabled v-if="!loginState.value" class="mdl-menu__item">编辑</li>
+                <li v-if="loginState.value" class="mdl-menu__item">编辑</li>
+
+              </ul>
+              </div>
             </div>
             <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
               <div class="minilogo"><img :src="post.avatar"></div>
@@ -229,19 +242,10 @@ export default {
                  {{post.favorite}} <i class="material-icons" role="presentation" :class="{'faed':state.favorite}">favorite</i>
                 <span class="visuallyhidden">favorites</span>
               </div>
-              <button id="demo-menu-lower-right"
-                      class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">more_vert</i>
-              </button>
-
-              <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                  for="demo-menu-lower-right">
-                <!-- <li class="mdl-menu__item">收藏</li> -->
-                <li class="mdl-menu__item">分享</li>
-                <li disabled v-if="!loginState.value" class="mdl-menu__item">编辑</li>
-                <li v-if="loginState.value" class="mdl-menu__item">编辑</li>
-
-              </ul>
+               <div>
+                <i class="material-icons" role="presentation">share</i>
+                <span class="visuallyhidden">share</span>
+              </div>
             </div>
             <div class="entry-content">
                 {{{post.text | marked}}}
