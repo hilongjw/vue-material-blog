@@ -1,7 +1,5 @@
 <script>
 export default {
-	ready:function(){
-	}
 
 }
 

@@ -1,10 +1,5 @@
 module.exports = function(router){
 	router.map({
-		'*':{
-			component: function (resolve) {
-			  require(['./components/index.vue'], resolve)
-			}
-		},
 		'/': {
 			name:'home',
             component: function (resolve) {
@@ -17,10 +12,16 @@ module.exports = function(router){
 			  require(['./components/write.vue'], resolve)
 			}
         },
-        '/login': {
+        '/edit/:id': {
+        	name:'edit',
+            component: function (resolve) {
+			  require(['./components/write.vue'], resolve)
+			}
+        },
+        '/test': {
         	name:'write',
             component: function (resolve) {
-			  require(['./components/login.vue'], resolve)
+			  require(['./components/await.vue'], resolve)
 			}
         },
         'entry/:id':{

@@ -7,7 +7,12 @@ var Cloud = store.state.Cloud
 
 export default {
     data() {
+        var edit = false;
+        if(this.$route.params.id != undefined){
+            edit = true
+        }
             return {
+                edit:edit,
                 post: {
                     title: '',
                     content: "",
@@ -16,10 +21,27 @@ export default {
             }
         },
         ready: function() {
-            this.$nextTick(function() {
+            var self = this;
+            if(this.edit){
+                this.loadPost(function(tmp){
+                    self.post = {
+                        title: tmp.title,
+                        content: tmp.text,
+                        frontImg: tmp.frontcover
+                    }
+
+              self.$nextTick(function(){
                 componentHandler.upgradeAllRegistered();
+              })
             })
+            }else{
+                this.$nextTick(function() {
+                    componentHandler.upgradeAllRegistered();
+                })
+            
+            }
             autosize(document.querySelector('#content'));
+            
         },
         computed: {
             loginState() {
@@ -51,9 +73,37 @@ export default {
                     componentHandler.upgradeAllRegistered();
                 })
             },
+            loadPost:function(add){
+              var self = this;
+              var query = new Cloud.Query(Post);
+              var tmp = null;
+              query.include('author');
+              query.get(this.$route.params.id, {
+                  success: function(post) {
+                    var object = post;
+                    tmp = {
+                      "id": object.id,
+                      "title": object.get('title'),
+                      "frontcover": object.get('frontcover'),
+                      "text": object.get('text'),
+                      "author": object.get('author').getUsername(),
+                      'avatar': object.get('author').get('avatar'),
+                      "time": object.updatedAt,
+                      "favorite": object.get('favorite'),
+                      "comment":[]
+                  };
+                    
+                  (add)(tmp);
+
+                  },
+                  error: function(object, error) {
+                    self.showModal('提示','加载失败，我也不知道怎么回事')
+                  }
+              });
+            },
             newPost() {
                 var self = this;
-                var post = new Post();
+
 
                 var currentUser = store.state.Cloud.User.current();
                 if (!currentUser) {
@@ -71,6 +121,10 @@ export default {
                 if(self.post.frontImg == null){
                     self.post.frontImg = 'dist/shopping.jpg';
                 }
+
+                if(!this.edit){
+                    var post = new Post();
+                
                 post.save({
                     "title": self.post.title,
                     "frontcover": self.post.frontImg,
@@ -85,6 +139,31 @@ export default {
                         self.showModal('提示', '你的文章写的太棒了，但是由于一些故障，没有完成提交。')
                     }
                 });
+                }else{
+                    var query = new Cloud.Query(Post);
+                    query.get(this.$route.params.id, {
+                        success: function(post) {
+                          
+                          post.save({
+                                "title": self.post.title,
+                                "frontcover": self.post.frontImg,
+                                "text": self.post.content,
+                                "author": currentUser,
+                                "favorite": 0
+                            }, {
+                                success: function(post) {
+                                    self.showModal('提示', '你的文章写的太棒了，已经完成提交。')
+                                },
+                                error: function(post, error) {
+                                    self.showModal('提示', '你的文章写的太棒了，但是由于一些故障，没有完成提交。')
+                                }
+                            });
+                        },
+                        error: function(object, error) {
+                          self.showModal('提示', error.message)
+                        }
+                    });
+                }
             },
             upImg(){
                 var self = this;
@@ -210,7 +289,7 @@ export default {
 
                                   <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                                       for="demo-menu-lower-right">
-                                    <li class="mdl-menu__item"><input @change="upImg" type="file" id="frontImg">修改</li>
+                                    <li class="mdl-menu__item"><input @change="upImg" type="file" id="frontImg">上传新图片</li>
                                   </ul>
                                   </div>
                             </div>

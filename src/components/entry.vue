@@ -14,6 +14,7 @@ export default {
         commentTmp:''
       },
       post:{
+        frontcover:'dist/welcome_card.jpg',
         comment:[]
       }
     }
@@ -24,8 +25,9 @@ export default {
     }
   },
   ready:function(){
-    console.log(componentHandler)
-    componentHandler.upgradeAllRegistered();
+    this.$nextTick(function() {
+        componentHandler.upgradeAllRegistered();
+    })
   },
   asyncData: function(resolve, reject) {
     var self = this;
@@ -226,7 +228,7 @@ export default {
               <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                   for="demo-menu-lower-right">
                 <li disabled v-if="!loginState.value" class="mdl-menu__item">编辑</li>
-                <li v-if="loginState.value" class="mdl-menu__item">编辑</li>
+                <li v-if="loginState.value" v-link="'../edit/'+this.$route.params.id" class="mdl-menu__item">编辑</li>
 
               </ul>
               </div>
