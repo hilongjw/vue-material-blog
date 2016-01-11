@@ -4,10 +4,11 @@ import store from '../store/index'
 var Cloud = store.state.Cloud;
 var Post = Cloud.Object.extend('Post');
 var Comment = Cloud.Object.extend('Comment');
-
+var self = null;
 export default {
   data(){
-  
+    self = this;
+    this.getData()
     return{
       state:{
         favorite:false,
@@ -29,20 +30,16 @@ export default {
         componentHandler.upgradeAllRegistered();
     })
   },
-  asyncData: function(resolve, reject) {
-    var self = this;
-    this.loadPost(0,function(tmp){
-      resolve({
-              post:tmp
-            });
-
-      self.$nextTick(function(){
-        componentHandler.upgradeAllRegistered();
-      })
-
-    })
-  },
   methods:{
+    getData(){
+      this.loadPost(function(tmp){
+        self.post = tmp
+        self.$nextTick(function(){
+          componentHandler.upgradeAllRegistered();
+        })
+
+      })
+    },
     showModal(title,text){
       store.actions.showModal(title,text);
       
@@ -50,8 +47,7 @@ export default {
         componentHandler.upgradeAllRegistered();
       })
     },
-    loadPost:function(skip,add){
-      var self = this;
+    loadPost(add){
       var query = new Cloud.Query(Post);
       var tmp = null;
       query.include('author');
@@ -82,11 +78,11 @@ export default {
       });
     },
     loadComment(){
-      var self = this;
       var tmp = [];
       var query = new Cloud.Query(Comment);
       var post = new Post();
       post.id = this.$route.params.id;
+
       query.include('author')
       query.equalTo('post', post);
       query.find({
@@ -104,7 +100,6 @@ export default {
       });
     },
     tapFavorite:function(){
-      var self = this;
       var query = new Cloud.Query(Post);
       query.get(this.$route.params.id, {
           success: function(post) {
@@ -129,8 +124,6 @@ export default {
       
     },
     addComment:function(){
-
-      var self = this;
       var query = new Cloud.Query(Post);
       var post = new Post();
       var comment = new Comment();
@@ -155,32 +148,6 @@ export default {
           self.showModal('提示','加载失败，'+error.message)
         }
       });
-    },
-    goNext:function(type){
-      var self = this;
-      if(type==='next'){
-        this.$http.get('dist/posts.json').then(function (response) {
-          
-          if(response.data[self.post.id+1] != undefined ){
-            document.documentElement.scrollTop = document.body.scrollTop =0
-            self.post = response.data[self.post.id+1]
-            self.$route.router.go(self.post.id+1)
-          }
-          
-        }, function (response) {
-        });
-      }else{
-        this.$http.get('dist/posts.json').then(function (response) {
-          
-          if(response.data[self.post.id-1] != undefined){
-            document.documentElement.scrollTop = document.body.scrollTop =0
-            self.post = response.data[self.post.id-1]
-            self.$route.router.go(self.post.id+1)
-          }
-          
-        }, function (response) {
-        });
-      }
     }
   },
   ready:function(){
@@ -280,14 +247,14 @@ export default {
           </div>
 
           <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-            <a v-tap="loadComment" class="demo-nav__button">
+            <a class="demo-nav__button">
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
               </button>
               Newer
             </a>
             <div class="section-spacer"></div>
-            <a v-tap="goNext('last')" class="demo-nav__button">
+            <a class="demo-nav__button">
               Older
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_forward</i>

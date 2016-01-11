@@ -4,21 +4,8 @@ import store from '../store/index'
 var Cloud = store.state.Cloud;
 export default {
   data(){
-    var logined = true;
-    var name = '';
-    var currentUser = Cloud.User.current();
-    if (!currentUser) {
-        logined = false
-    } else {
-        name = currentUser.getUsername()
-    }
+    self = this;
     return{
-      info: {
-          logined: logined,
-          user: {
-              name: name
-          }
-      },
       site:{
         name:'Cov Blog',
         skip:0
@@ -50,7 +37,18 @@ export default {
     }
   },
   methods:{
-    showLogin:function(){
+    getData(){
+      this.loadPost(self.site.skip,function(tmp){
+        store.actions.hideLoading();
+        self.posts = tmp
+        self.site.skip = 10;
+        self.$nextTick(function(){
+          componentHandler.upgradeAllRegistered();
+        })
+      })
+      
+    },
+    showLogin(){
       store.actions.showLogin();
       document.getElementById('indexDrawer').setAttribute('class','mdl-layout__drawer')
       document.getElementsByClassName('mdl-layout__obfuscator')[0].setAttribute('class','mdl-layout__obfuscator')
@@ -60,7 +58,7 @@ export default {
         componentHandler.upgradeAllRegistered();
       })
     },
-    hideLogin:function(event){
+    hideLogin(event){
       if(event.target == document.getElementById('showLogin')){
         return true;
       }
@@ -77,7 +75,7 @@ export default {
         componentHandler.upgradeAllRegistered();
       })
     },
-    loadPost:function(skip,add){
+    loadPost(skip,add){
       var Post = Cloud.Object.extend('Post');
       var query = new Cloud.Query(Post);
       var tmp = [];
@@ -110,7 +108,7 @@ export default {
         }
       });
     },
-    clickMore:function(){
+    clickMore(){
       var self = this;
       
       this.loadPost(this.site.skip,function(tmp){
@@ -123,7 +121,7 @@ export default {
         })
       })
     },
-    goEntry:function(id){
+    goEntry(id){
       window.scrollTop = 0;
       this.$route.router.go('entry/'+id)
     }
@@ -155,7 +153,7 @@ export default {
 
         <div class="cov-blog__posts mdl-grid">
 
-          <div @click="goEntry(post.id)" class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
+          <div v-link="{ name: 'entry', params: { id: post.id }}" class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
             <div class="mdl-card__media mdl-color-text--grey-50" :style="{'background-image': 'url('+post.frontcover+')'}">
               <h3><a >{{post.title}}</a></h3>
             </div>
