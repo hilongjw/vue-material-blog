@@ -9,5 +9,8 @@ export default {
   showModal: cov.SHOWMODAL,
   hideModal:cov.HIDEMODAL,
   logIning:cov.LOGINING,
-  logOuting:cov.LOGOUTING
+  logOuting:cov.LOGOUTING,
+  showLoading:cov.SHOWLOADING,
+  hideLoading:cov.HIDELOADING
+
 }

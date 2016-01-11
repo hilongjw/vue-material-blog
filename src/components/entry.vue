@@ -72,6 +72,7 @@ export default {
           };
             
           (add)(tmp);
+          store.actions.hideLoading();
           self.loadComment()
 
           },
@@ -183,6 +184,7 @@ export default {
     }
   },
   ready:function(){
+    store.actions.showLoading();
     window.scrollTop = 0;
   }
 }
@@ -206,10 +208,10 @@ export default {
   
   
 </style>
+<style src="../assets/css/markdown.css"></style>
 <template>
-
 <div class="cov-blog entry cov-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
-      <main class="mdl-layout__content">
+      <main  class="mdl-layout__content">
         <div class="demo-back">
           <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" v-link="'/'" title="go back" role="button">
             <i class="material-icons" role="presentation">arrow_back</i>

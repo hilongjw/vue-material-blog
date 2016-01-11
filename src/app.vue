@@ -1,18 +1,23 @@
 <script>
-  import login from './components/login.vue'
-  import modal from './components/modal.vue'
+  import loading from './components/loading.vue'
 
   export default {
     components:{
-      'login':login,
-      'modal':modal
+      'login':function (resolve) {
+        require(['./components/login.vue'], resolve)
+      },
+      'modal':function (resolve) {
+        require(['./components/modal.vue'], resolve)
+      },
+      'loading':loading
     }
   }
 </script>
 <template>
-   <router-view></router-view>
-   <login></login>
-   <modal></modal>
+  <loading></loading>
+  <router-view></router-view>
+  <login></login>
+  <modal></modal>
 </template>
 <style src="material-design-lite/material.css"></style>
 <style>

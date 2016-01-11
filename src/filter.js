@@ -33,6 +33,7 @@ var timeago = function(time) {
 var marked = function(value){
   if(value != undefined){
     var mark = require('marked');
+    
     return mark(value)
   }else{
     return value;

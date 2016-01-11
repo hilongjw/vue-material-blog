@@ -1,4 +1,4 @@
-import { SHOWLOGIN ,HIDELOGIN,SHOWSIGN ,HIDESIGN,SHOWMODAL,HIDEMODAL,LOGINING,LOGOUTING} from './mutation-types'
+import { SHOWLOGIN ,HIDELOGIN,SHOWSIGN ,HIDESIGN,SHOWMODAL,HIDEMODAL,LOGINING,LOGOUTING,SHOWLOADING,HIDELOADING} from './mutation-types'
 
 export default {
  
@@ -31,5 +31,11 @@ export default {
   [LOGOUTING] (state){
     state.logined.value = false
     state.logined.user = null
+  },
+  [SHOWLOADING] (state){
+    state.loading = true
+  },
+  [HIDELOADING] (state){
+    state.loading = false
   }
 }

@@ -80,6 +80,6 @@ npm run build
 
 ## 感谢
 
-vue.js, vue-tap, material design lite, marked.js, leancloud 
+vue.js, vue-tap, material design lite, markdown.js, leancloud 
 
 向以上项目作者致敬

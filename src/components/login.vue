@@ -191,7 +191,7 @@ export default {
         </div>
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" v-tap="showLogin">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="showLogin">
           Log in
         </a>
          <a class="login-btn mdl-button mdl-button--colored mdl-js-button  mdl-button--raised mdl-js-ripple-effect" v-tap="Signup">

@@ -22,6 +22,7 @@
   "dependencies": {
     "avoscloud-sdk": "^0.6.7",
     "leancloud-realtime": "^2.3.2",
+    "prettify-markdown": "^0.1.1",
     "vue": "^1.0.0",
     "vue-async-data": "^1.0.2",
     "vue-resource": "^0.1.17",
@@ -40,6 +41,7 @@
     "eslint": "^1.10.3",
     "eslint-loader": "^1.1.1",
     "file-loader": "^0.8.4",
+    "markdown": "^0.5.0",
     "material-design-lite": "^1.0.6",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.4.0",

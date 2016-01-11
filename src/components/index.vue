@@ -29,6 +29,7 @@ export default {
   asyncData: function(resolve, reject) {
     var self = this;
     this.loadPost(0,function(tmp){
+      store.actions.hideLoading();
       resolve({
               posts:tmp
             })
@@ -40,6 +41,7 @@ export default {
     
   },
   ready:function(){
+      store.actions.showLoading();
       window.scrollTop = 0;
   },
   computed:{
@@ -153,7 +155,7 @@ export default {
 
         <div class="cov-blog__posts mdl-grid">
 
-          <div v-tap="goEntry(post.id)" class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
+          <div @click="goEntry(post.id)" class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col" v-for="post in posts">
             <div class="mdl-card__media mdl-color-text--grey-50" :style="{'background-image': 'url('+post.frontcover+')'}">
               <h3><a >{{post.title}}</a></h3>
             </div>

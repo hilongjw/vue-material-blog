@@ -29,6 +29,7 @@ const state = {
         value: logined,
         user:currentUser
     },
+    loading:true,
     common: {
         isEmail: new RegExp("([A-Za-z0-9][-A-Za-z0-9]+\@)+([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}")
     }

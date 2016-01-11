@@ -31,5 +31,10 @@ module.exports = function(router){
 			}
         }
     })
+
+    router.redirect({
+      // 重定向任意未匹配路径到 /
+      '*': '/'
+    })
 	
 }

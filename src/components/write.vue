@@ -4,9 +4,10 @@ import autosize from 'autosize'
 import store from '../store/index'
 var Post = store.state.Cloud.Object.extend('Post');
 var Cloud = store.state.Cloud
-
+var self = null;
 export default {
     data() {
+        self = this;
         var edit = false;
         if(this.$route.params.id != undefined){
             edit = true
@@ -21,7 +22,8 @@ export default {
             }
         },
         ready: function() {
-            var self = this;
+            store.actions.showLoading();
+            
             if(this.edit){
                 this.loadPost(function(tmp){
                     self.post = {
@@ -74,7 +76,6 @@ export default {
                 })
             },
             loadPost:function(add){
-              var self = this;
               var query = new Cloud.Query(Post);
               var tmp = null;
               query.include('author');
@@ -102,8 +103,6 @@ export default {
               });
             },
             newPost() {
-                var self = this;
-
 
                 var currentUser = store.state.Cloud.User.current();
                 if (!currentUser) {
@@ -148,8 +147,7 @@ export default {
                                 "title": self.post.title,
                                 "frontcover": self.post.frontImg,
                                 "text": self.post.content,
-                                "author": currentUser,
-                                "favorite": 0
+                                "author": currentUser
                             }, {
                                 success: function(post) {
                                     self.showModal('提示', '你的文章写的太棒了，已经完成提交。')
@@ -166,8 +164,7 @@ export default {
                 }
             },
             upImg(){
-                var self = this;
-                console.log(1);
+                store.actions.showLoading();
                 var fileUploadControl = document.getElementById('frontImg');
                 if (fileUploadControl.files.length < 1) {
                      self.showModal('提示', '文件类型异常')
@@ -179,6 +176,7 @@ export default {
                 var avFile = new Cloud.File(name, file);
                 avFile.save().then(function() {
                     self.post.frontImg = avFile.url()
+                    store.actions.hideLoading();
                 }, function(error) {
                   self.showModal('提示', error.message)
                 });
