@@ -4,7 +4,7 @@ import store from '../store/index'
 var Cloud = store.state.Cloud;
 var Post = Cloud.Object.extend('Post');
 var Comment = Cloud.Object.extend('Comment');
-var self = null;
+let self = null;
 export default {
   data(){
     self = this;

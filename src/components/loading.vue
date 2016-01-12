@@ -19,6 +19,7 @@ export default {
   .mdl-progress{
     position: fixed;
     top: 0;
+    width: 100%;
   }
 </style>
 <template>
