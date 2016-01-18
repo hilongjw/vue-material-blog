@@ -172,8 +172,6 @@ export default {
   .entry .comments > .comment{
     margin-bottom: 2rem;
   }
-  
-  
 </style>
 <style src="../assets/css/markdown.css"></style>
 <template>
